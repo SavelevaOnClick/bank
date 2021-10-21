@@ -196,11 +196,11 @@ class Bank {
     return credit;
   }
 
-  isActivesCard(client, account) {
+  isActivesCreditCard(client) {
     let active = false;
     for (let account of client.accounts) {
       for (let property in account) {
-        if (property === account && account[property].activity) {
+        if (property === "credit" && account[property].activity) {
           active = new Date(account[property].activity) > new Date();
         }
       }
@@ -214,7 +214,7 @@ class Bank {
     for (let client of this.clients) {
       if (
         this.isCreditAccount(client) &&
-        boolean === this.isActivesCard(client, "credit")
+        boolean === this.isActivesCreditCard(client)
       ) {
         let temp = await this.getCreditClient(client, currency);
         if (temp) {

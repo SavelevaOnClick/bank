@@ -151,7 +151,7 @@ class Bank {
     return sum;
   }
 
-  async getSumAllCredit(currency) {
+  async getTotalSumCredit(currency) {
     let allcredit = null;
 
     for (let client of this.clients) {
@@ -209,7 +209,7 @@ class Bank {
     return boolean;
   }
 
-  async getSumOfCreditsOf(boolean, currency) {
+  async getSumCredit(boolean, currency) {
     let counter = null;
     let sumCredit = null;
     for (let client of this.clients) {

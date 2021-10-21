@@ -196,17 +196,16 @@ class Bank {
     return credit;
   }
 
-  isActivesAccount(client, account) {
-    let boolean = false;
+  isActivesCard(client, account) {
+    let active = false;
     for (let account of client.accounts) {
       for (let property in account) {
         if (property === account && account[property].activity) {
-          boolean =
-            new Date(account[property].activity) > new Date() || boolean;
+          active = new Date(account[property].activity) > new Date();
         }
       }
     }
-    return boolean;
+    return active;
   }
 
   async getSumCredit(boolean, currency) {
@@ -215,7 +214,7 @@ class Bank {
     for (let client of this.clients) {
       if (
         this.isCreditAccount(client) &&
-        boolean === this.isActivesAccount(client, "credit")
+        boolean === this.isActivesCard(client, "credit")
       ) {
         let temp = await this.getCreditClient(client, currency);
         if (temp) {

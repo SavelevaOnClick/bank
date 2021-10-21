@@ -197,15 +197,13 @@ class Bank {
   }
 
   isActivesCreditCard(client) {
-    let active = false;
     for (let account of client.accounts) {
       for (let property in account) {
         if (property === "credit" && account[property].activity) {
-          active = new Date(account[property].activity) > new Date();
+          return new Date(account[property].activity) > new Date();
         }
       }
     }
-    return active;
   }
 
   async getSumCredit(boolean, currency) {

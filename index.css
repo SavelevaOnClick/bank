@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #77dd77;
+  box-sizing: border-box;
+}
+#root {
+  display: flex;
+  padding-top: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+form input[type="text"] {
+  display: block;
+}
+form input {
+  margin-bottom: 15px;
+}
+button {
+  margin-right: 15px;
+}
+button:last-child {
+  margin-right: 0;
+}
+form {
+  padding: 15px;
+}
+.wrapperSelectTypeAccount {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.output {
+  background-color: #fff;
+  height: 50px;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title {
+  color: #026e24;
+}

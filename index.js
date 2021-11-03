@@ -89,84 +89,6 @@ class Bank {
     this.toStorage();
   }
 
-  render() {
-    const wrapperClientBlock = this.root.appendChild(
-      document.createElement("div")
-    );
-    const wrapperAddClient = wrapperClientBlock.appendChild(
-      document.createElement("div")
-    );
-    wrapperAddClient.appendChild(
-      this.createTitle("h2", "Добавить нвоого клиента", "title")
-    );
-    wrapperAddClient.appendChild(this.createClientForm());
-
-    const buttonSubmitForm = this.createButton("submit", "btn", "отправить");
-    wrapperAddClient.appendChild(buttonSubmitForm);
-    buttonSubmitForm.onclick = this.addClient.bind(
-      this,
-      wrapperAddClient.querySelector("form")
-    );
-    const wrapperClientList = wrapperClientBlock.appendChild(
-      document.createElement("div")
-    );
-    wrapperClientList.appendChild(
-      this.createTitle("h2", "Работа с клиентами", "title")
-    );
-    const searchClient = wrapperClientList.appendChild(
-      document.createElement("div")
-    );
-    searchClient.appendChild(this.createSearchClients(searchClient));
-    const wrapperFundBank = this.root.appendChild(
-      document.createElement("div")
-    );
-    const wrapperActivesBank = wrapperFundBank.appendChild(
-      document.createElement("div")
-    );
-    wrapperActivesBank.appendChild(
-      this.createTitle("h2", "Активы банка", "title")
-    );
-    const buttonActivesBank = wrapperActivesBank.appendChild(
-      this.createButton("button", "btn", "посчитать")
-    );
-
-    const selectCurrencyActives = wrapperActivesBank.appendChild(
-      this.createSelect(this.createCurrencyList(), this.createCurrencyList())
-    );
-    const activesBank = wrapperActivesBank.appendChild(
-      document.createElement("p")
-    );
-    activesBank.classList.add("output");
-    buttonActivesBank.onclick = this.getAllAssets.bind(
-      this,
-      activesBank,
-      selectCurrencyActives
-    );
-    const wrapperCreditsBlock = wrapperFundBank.appendChild(
-      document.createElement("div")
-    );
-    wrapperCreditsBlock.appendChild(this.createTitle("h2", "Кредиты", "title"));
-    const buttonCredits = wrapperCreditsBlock.appendChild(
-      this.createButton("button", "btn", "посчитать")
-    );
-    const selectCurrencyCredits = wrapperCreditsBlock.appendChild(
-      this.createSelect(this.createCurrencyList(), this.createCurrencyList())
-    );
-    const selectStatusClients = wrapperCreditsBlock.appendChild(
-      this.createSelect(["активные", "неактивные", "все"], [1, 0, 2])
-    );
-    const creditsBank = wrapperCreditsBlock.appendChild(
-      document.createElement("p")
-    );
-    creditsBank.classList.add("output");
-    buttonCredits.onclick = this.getSumCredit.bind(
-      this,
-      creditsBank,
-      selectStatusClients,
-      selectCurrencyCredits
-    );
-  }
-
   createSelect(options, values) {
     const select = document.createElement("select");
     options.forEach((option, index) => {
@@ -274,6 +196,84 @@ class Bank {
       );
       currencySelect.setAttribute("name", "currency");
     }
+  }
+
+  render() {
+    const wrapperClientBlock = this.root.appendChild(
+      document.createElement("div")
+    );
+    const wrapperAddClient = wrapperClientBlock.appendChild(
+      document.createElement("div")
+    );
+    wrapperAddClient.appendChild(
+      this.createTitle("h2", "Добавить нвоого клиента", "title")
+    );
+    wrapperAddClient.appendChild(this.createClientForm());
+
+    const buttonSubmitForm = this.createButton("submit", "btn", "отправить");
+    wrapperAddClient.appendChild(buttonSubmitForm);
+    buttonSubmitForm.onclick = this.addClient.bind(
+      this,
+      wrapperAddClient.querySelector("form")
+    );
+    const wrapperClientList = wrapperClientBlock.appendChild(
+      document.createElement("div")
+    );
+    wrapperClientList.appendChild(
+      this.createTitle("h2", "Работа с клиентами", "title")
+    );
+    const searchClient = wrapperClientList.appendChild(
+      document.createElement("div")
+    );
+    searchClient.appendChild(this.createSearchClients(searchClient));
+    const wrapperFundBank = this.root.appendChild(
+      document.createElement("div")
+    );
+    const wrapperActivesBank = wrapperFundBank.appendChild(
+      document.createElement("div")
+    );
+    wrapperActivesBank.appendChild(
+      this.createTitle("h2", "Активы банка", "title")
+    );
+    const buttonActivesBank = wrapperActivesBank.appendChild(
+      this.createButton("button", "btn", "посчитать")
+    );
+
+    const selectCurrencyActives = wrapperActivesBank.appendChild(
+      this.createSelect(this.createCurrencyList(), this.createCurrencyList())
+    );
+    const activesBank = wrapperActivesBank.appendChild(
+      document.createElement("p")
+    );
+    activesBank.classList.add("output");
+    buttonActivesBank.onclick = this.getAllAssets.bind(
+      this,
+      activesBank,
+      selectCurrencyActives
+    );
+    const wrapperCreditsBlock = wrapperFundBank.appendChild(
+      document.createElement("div")
+    );
+    wrapperCreditsBlock.appendChild(this.createTitle("h2", "Кредиты", "title"));
+    const buttonCredits = wrapperCreditsBlock.appendChild(
+      this.createButton("button", "btn", "посчитать")
+    );
+    const selectCurrencyCredits = wrapperCreditsBlock.appendChild(
+      this.createSelect(this.createCurrencyList(), this.createCurrencyList())
+    );
+    const selectStatusClients = wrapperCreditsBlock.appendChild(
+      this.createSelect(["активные", "неактивные", "все"], [1, 0, 2])
+    );
+    const creditsBank = wrapperCreditsBlock.appendChild(
+      document.createElement("p")
+    );
+    creditsBank.classList.add("output");
+    buttonCredits.onclick = this.getSumCredit.bind(
+      this,
+      creditsBank,
+      selectStatusClients,
+      selectCurrencyCredits
+    );
   }
 
   getSumCredit(container, selectStatus, selectCurrency, event) {
